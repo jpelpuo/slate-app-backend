@@ -1,0 +1,6 @@
+# Sensitive data
+.env
+
+# Misc
+/node_modules
+/frontend

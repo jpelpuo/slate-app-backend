@@ -41,7 +41,7 @@ app.use('/api/course', courseRoutes)
 
 app.use(express.static('public'));
 
-app.get('*', (request, response) => {
+app.get('/', (request, response) => {
     response.sendFile(__dirname, 'public', 'index.html')
 })
 

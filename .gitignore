@@ -4,3 +4,5 @@
 # Misc
 /node_modules
 /frontend
+
+rest.http

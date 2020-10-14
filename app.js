@@ -39,11 +39,11 @@ app.use('/api/user', userRoutes);
 app.use('/api/course', courseRoutes)
 
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
-app.get('/', (request, response) => {
-    response.sendFile(__dirname, 'public', 'index.html')
-})
+// app.get('/', (request, response) => {
+//     response.sendFile(__dirname, 'public', 'index.html')
+// })
 
 
 // Catch 404 and forward to error handler

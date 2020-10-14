@@ -1,1 +1,1 @@
-# Backed for slate app
+# Backend for slate app

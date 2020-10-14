@@ -44,7 +44,9 @@ router.post('/auth', [
         }
 
         const authData = await userLogin(request.body);
-        return response.json(authData);
+        return response.json({
+            authData
+        });
     } catch (error) {
         next(error)
     }

@@ -11,7 +11,7 @@ module.exports = deleteCourse = async (courseId, userId) => {
             throw createError.Unauthorized()
         }
 
-        const operationInfo = await findByIdAndDelete(courseId);
+        const operationInfo = await Course.findByIdAndDelete(courseId);
 
         return operationInfo;
     } catch (error) {

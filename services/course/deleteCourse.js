@@ -1,7 +1,6 @@
 const Course = require('../../dBmodels/course');
 const createError = require('http-errors');
 const Admin = require('../../dBmodels/admin');
-const { findByIdAndDelete } = require('../../dBmodels/course');
 
 module.exports = deleteCourse = async (courseId, userId) => {
     try {

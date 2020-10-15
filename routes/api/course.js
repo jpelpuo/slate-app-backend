@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerCourse, addCourse, getCourses } = require('../../services/')
+const { registerCourse, addCourse, getCourses, deleteCourse } = require('../../services/')
 const { body, validationResult } = require('express-validator');
 const createError = require('http-errors');
 const { checkAuthorization } = require('../../helpers/authHelper');
@@ -61,6 +61,22 @@ router.get('/', async (request, response, next) => {
 
         return response.json({
             courses
+        })
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.get('/delete/:courseId', async (request, response, next) => {
+    try {
+        checkAuthorization(request);
+
+        const { courseId } = request.params;
+
+        const operationInfo = await deleteCourse(courseId, request.userId);
+
+        return response.json({
+            operationInfo
         })
     } catch (error) {
         next(error)

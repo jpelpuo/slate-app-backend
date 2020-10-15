@@ -4,9 +4,9 @@ const createError = require('http-errors')
 
 module.exports = registerCourse = async (courseId, userId) => {
     try {
-        const courseExists = await Course.findById(courseId);
+        const course = await Course.findById(courseId);
 
-        if (!courseExists) {
+        if (!course) {
             throw createError.NotFound('Course not found');
         }
 
@@ -17,6 +17,9 @@ module.exports = registerCourse = async (courseId, userId) => {
         }
 
         user.registeredCourses = [...user.registeredCourses, courseId];
+        course.registeredUsers = [...course.registeredUsers, userId];
+
+        await course.save();
         await user.save();
 
         return {

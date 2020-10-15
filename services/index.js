@@ -4,7 +4,8 @@ const register = require('./user/register');
 const saveImage = require('./user/saveImage');
 const addCourse = require('./course/addCourse');
 const registerCourse = require('./user/registerCourse');
-const getUserInfo = require('./user/getUserInfo')
+const getUserInfo = require('./user/getUserInfo');
+const getCourses = require('./course/getCourses');
 
 module.exports = {
     adminLogin,
@@ -13,5 +14,6 @@ module.exports = {
     saveImage,
     addCourse,
     registerCourse,
-    getUserInfo
+    getUserInfo,
+    getCourses
 }

@@ -2,7 +2,7 @@ const Course = require('../../dBmodels/course');
 const createError = require('http-errors');
 const Admin = require('../../dBmodels/admin');
 
-module.exports = addCourse = async ({ courseName, subject, description }, userId) => {
+module.exports = getCourses = async (userId) => {
     try {
         const admin = await Admin.findById(userId);
 
@@ -10,17 +10,10 @@ module.exports = addCourse = async ({ courseName, subject, description }, userId
             throw createError.Unauthorized()
         }
 
-        const newCourse = new Course({
-            courseName,
-            subject,
-            description
-        });
+        const courses = await Course.find()
 
-        await newCourse.save();
-
-        return newCourse;
-
+        return courses;
     } catch (error) {
-        throw error;
+        throw error
     }
 }

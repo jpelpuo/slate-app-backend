@@ -1,8 +1,8 @@
 const express = require('express');
-const { registerCourse, addCourse } = require('../../services/')
+const { registerCourse, addCourse, getCourses } = require('../../services/')
 const { body, validationResult } = require('express-validator');
 const createError = require('http-errors');
-const { checkAuthorization } = require('../../helpers/authHelper')
+const { checkAuthorization } = require('../../helpers/authHelper');
 
 const router = express.Router();
 
@@ -47,6 +47,21 @@ router.post('/add', [
             newCourse
         })
 
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+router.get('/', async (request, response, next) => {
+    try {
+        checkAuthorization(request)
+
+        const courses = await getCourses(request.userId)
+
+        return response.json({
+            courses
+        })
     } catch (error) {
         next(error)
     }

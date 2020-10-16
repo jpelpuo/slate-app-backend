@@ -9,7 +9,7 @@ module.exports = getUserInfo = async email => {
             throw createError.NotFound('User not found')
         }
 
-        await user.populate('Course').execPopulate();
+        await user.populate('registeredCourses').execPopulate();
 
         return {
             ...user._doc,

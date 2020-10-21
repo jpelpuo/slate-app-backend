@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerCourse, addCourse, getCourses, deleteCourse } = require('../../services/')
+const { registerCourse, addCourse, getCourses, deleteCourse, unregisterCourse } = require('../../services/')
 const { body, validationResult } = require('express-validator');
 const createError = require('http-errors');
 const { checkAuthorization } = require('../../helpers/authHelper');
@@ -20,6 +20,30 @@ router.get('/register/:courseId', async (request, response, next) => {
         const courseAdded = await registerCourse(courseId, request.userId);
 
         if (!courseAdded) {
+            return response.json({
+                status: FAILURE
+            })
+        }
+
+        return response.json({
+            status: SUCCESS
+        })
+    } catch (error) {
+        next(error)
+    }
+})
+
+// @router GET /api/course/unregister
+// @description Unregister for a course
+router.get('/unregister/:courseId', async (request, response, next) => {
+    try {
+        checkAuthorization(request);
+
+        const { courseId } = request.params;
+
+        const courseRemoved = await unregisterCourse(courseId, request.userId);
+
+        if (!courseRemoved) {
             return response.json({
                 status: FAILURE
             })

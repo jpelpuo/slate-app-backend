@@ -1,14 +1,11 @@
 const Course = require('../../dBmodels/course');
 const createError = require('http-errors');
 const Admin = require('../../dBmodels/admin');
+const verifyAdmin = require('../../dBmodels/admin')
 
 module.exports = addCourse = async ({ courseName, subject, description }, userId) => {
     try {
-        const admin = await Admin.findById(userId);
-
-        if (!admin) {
-            throw createError.Unauthorized()
-        }
+        verifyAdmin(userId)
 
         const newCourse = new Course({
             courseName,

@@ -1,31 +1,24 @@
 const User = require('../../dBmodels/user');
 const Course = require('../../dBmodels/course');
 const createError = require('http-errors')
+const verifyUser = require('./verifyUser');
+const getCourse = require('../course/getCourse')
 
 module.exports = registerCourse = async (courseId, userId) => {
     try {
-        const course = await Course.findById(courseId);
+        // Check availability of user and course
+        const user = await verifyUser(userId)
+        const course = await getCourse(courseId)
 
-        if (!course) {
-            throw createError.NotFound('Course not found');
-        }
+        // Update user and course
+        user.registeredCourses = [...user.registeredCourses, courseId]
+        course.registeredUsers = [...course.registeredUsers, userId]
 
-        const user = await User.findById(userId);
-
-        if (!user) {
-            throw createError.NotFound('User does not exist');
-        }
-
-        user.registeredCourses = [...user.registeredCourses, courseId];
-        course.registeredUsers = [...course.registeredUsers, userId];
-
+        // Save changes
         await course.save();
         await user.save();
 
-        return {
-            ...user._doc,
-            password: null
-        }
+        return user.registeredCourses.includes(courseId) && course.registeredUsers.includes(userId)
     } catch (error) {
         throw error;
     }

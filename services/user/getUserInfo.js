@@ -1,5 +1,5 @@
 const User = require('../../dBmodels/user');
-const createError = require('http-errors')
+const createError = require('http-errors');
 
 module.exports = getUserInfo = async email => {
     try {

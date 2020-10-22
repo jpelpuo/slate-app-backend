@@ -5,7 +5,7 @@ module.exports = verifyAdmin = async userId => {
     try {
         const admin = await Admin.findById(userId);
 
-        if (!user) {
+        if (!admin) {
             throw createError.Unauthorized()
         }
 

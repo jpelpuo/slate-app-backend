@@ -16,7 +16,8 @@ const examSchema = new Schema({
         }
     ],
     numberOfQuestions: {
-        type: Number
+        type: Number,
+        required: true
     }
 },
     {

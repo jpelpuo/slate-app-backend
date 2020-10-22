@@ -14,7 +14,10 @@ const examSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Question'
         }
-    ]
+    ],
+    numberOfQuestions: {
+        type: Number
+    }
 },
     {
         timestamps: true

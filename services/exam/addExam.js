@@ -7,7 +7,7 @@ module.exports = addExam = async ({ name, duration, questions }, userId) => {
     try {
         verifyAdmin(userId)
 
-        const newExam = new Exam({ name, duration, questions: [] })
+        const newExam = new Exam({ name, duration, questions: [], numberOfQuestions: questions.length })
 
         questions.forEach(question => question.whichExam = newExam._id)
 

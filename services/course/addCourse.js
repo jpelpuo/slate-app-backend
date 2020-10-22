@@ -1,6 +1,4 @@
 const Course = require('../../dBmodels/course');
-const createError = require('http-errors');
-const Admin = require('../../dBmodels/admin');
 const verifyAdmin = require('../../dBmodels/admin')
 
 module.exports = addCourse = async ({ courseName, subject, description }, userId) => {

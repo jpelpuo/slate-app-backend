@@ -8,6 +8,7 @@ const getUserInfo = require('./user/getUserInfo')
 const getCourses = require('./course/getCourses')
 const deleteCourse = require('./course/deleteCourse')
 const unregisterCourse = require('./user/unregisterCourse')
+const addExam = require('./exam/addExam')
 
 module.exports = {
     adminLogin,
@@ -19,5 +20,6 @@ module.exports = {
     getUserInfo,
     getCourses,
     deleteCourse,
-    unregisterCourse
+    unregisterCourse,
+    addExam
 }

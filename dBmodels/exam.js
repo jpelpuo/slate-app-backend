@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const examSchema = new Schema({
-    examName: {
+    name: {
         type: String,
         required: true
     },

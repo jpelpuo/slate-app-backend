@@ -14,6 +14,10 @@ const questionSchema = new Schema({
     correctAnswer: {
         type: String,
         required: true
+    },
+    whichExam: {
+        type: Schema.Types.ObjectId,
+        ref: 'Exam'
     }
 },
     {

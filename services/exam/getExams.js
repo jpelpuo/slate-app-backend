@@ -6,7 +6,7 @@ module.exports = getExams = async () => {
     try {
         const exams = await Exam.find()
 
-        // await exams.populate('questions').execPopulate()
+        await exams.populate('questions').execPopulate()
 
         return exams;
     } catch (error) {

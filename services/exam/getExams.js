@@ -4,9 +4,7 @@ const createError = require('http-errors')
 
 module.exports = getExams = async () => {
     try {
-        const exams = await Exam.find()
-
-        await exams.populate('questions').execPopulate()
+        const exams = await Exam.find().populate('questions').exec()
 
         return exams;
     } catch (error) {

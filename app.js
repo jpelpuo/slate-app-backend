@@ -32,13 +32,13 @@ app.use(isAuthenticated);
 const adminRoutes = require('./routes/api/admin');
 const userRoutes = require('./routes/api/user');
 const courseRoutes = require('./routes/api/course')
-const exampRoutes = require('./routes/exam')
+const examRoutes = require('./routes/api/exam')
 
 // Registering routes
 app.use('/api/admin', adminRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/course', courseRoutes)
-app.use('/api/exam', exampRoutes)
+app.use('/api/exam', examRoutes)
 
 
 // Catch 404 and forward to error handler

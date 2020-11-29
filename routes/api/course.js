@@ -64,9 +64,7 @@ router.post('/add', [
 ], async (request, response, next) => {
     try {
         checkAuthorization(request);
-
-        console.log(request.body)
-        console.log(request.userId)
+        
         const newCourse = await addCourse(request.body, request.userId);
 
         return response.json({

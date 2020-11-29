@@ -3,7 +3,7 @@ const verifyAdmin = require('../../dBmodels/admin')
 
 module.exports = addCourse = async ({ courseName, subject, description }, userId) => {
     try {
-        verifyAdmin(userId)
+        // verifyAdmin(userId)
 
         const newCourse = new Course({
             courseName,
